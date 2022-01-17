@@ -1,10 +1,10 @@
 package color_thief
 
 import (
-	"color-thief/helper"
-	"color-thief/wsm"
-	"color-thief/wu"
 	"errors"
+	"github.com/legion-zver/color-thief/helper"
+	"github.com/legion-zver/color-thief/wsm"
+	"github.com/legion-zver/color-thief/wu"
 	"image"
 	"image/color"
 	"image/png"

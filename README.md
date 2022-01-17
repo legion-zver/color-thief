@@ -1,4 +1,6 @@
-# color-thief
+# Color Thief
+
+Fork https://github.com/legion-zver/color-thief
 
 A high performance Golang module for grabbing color palettes from images. Instead of 
 implementing conventional Modified Median Color Quantization (MMCQ), it implements Xiaolin Wu's Color Quantizer[[1]](#1) as well as

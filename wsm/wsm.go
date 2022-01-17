@@ -1,8 +1,8 @@
 package wsm
 
 import (
-	"color-thief/argsort"
-	"color-thief/wu"
+	"github.com/legion-zver/color-thief/argsort"
+	"github.com/legion-zver/color-thief/wu"
 	"math"
 )
 

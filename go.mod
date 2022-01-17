@@ -1,3 +1,3 @@
-module color-thief
+module github.com/legion-zver/color-thief
 
-go 1.16
+go 1.17

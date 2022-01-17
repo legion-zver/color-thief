@@ -1,7 +1,7 @@
 package wu
 
 import (
-	"color-thief/helper"
+	"github.com/legion-zver/color-thief/helper"
 	"log"
 	"reflect"
 	"testing"
