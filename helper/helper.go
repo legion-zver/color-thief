@@ -7,7 +7,10 @@ import (
 	"image/draw"
 	_ "image/jpeg"
 	_ "image/png"
+	"io"
+	"net/http"
 	"os"
+	"strings"
 )
 
 // SubsamplingPixels 2.2.1 Implement 2:1 subsampling in the horizontal and vertical directions, so that only
@@ -71,17 +74,30 @@ func Color(c [3]int) color.Color {
 }
 
 func ReadImage(uri string) (image.Image, error) {
-	res, err := os.Open(uri)
-	if err != nil {
-		return nil, err
+	var (
+		reader io.ReadCloser
+		err    error
+	)
+	if strings.Contains(uri, "://") {
+		resp, _err := http.Get(uri)
+		if _err != nil {
+			return nil, _err
+		}
+		reader = resp.Body
+	} else {
+		reader, err = os.Open(uri)
+		if err != nil {
+			return nil, err
+		}
 	}
-
-	img, _, err := image.Decode(res)
-	if err != nil {
-		return nil, err
+	if reader == nil {
+		return nil, os.ErrInvalid
 	}
-
-	if err = res.Close(); err != nil {
+	defer func(reader io.ReadCloser) {
+		_ = reader.Close()
+	}(reader)
+	img, _, err := image.Decode(reader)
+	if err != nil {
 		return nil, err
 	}
 	return img, nil
